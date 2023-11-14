@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <record model="ir.actions.act_window" id="informacion_list_action">
-            <field name="name">A acción de informacion</field>
+            <field name="name">A acción de información</field>
             <field name="res_model">odoo_basico.informacion</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
@@ -9,11 +9,13 @@
             </field>
         </record>
 
+        <!-- explicit list view definition -->
+
         <record model="ir.ui.view" id="informacion_form_view">
             <field name="name">informacion.form</field>
             <field name="model">odoo_basico.informacion</field>
             <field name="arch" type="xml">
-                <form string="Formulario de información">
+                <form string="Formulario de Información">
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -34,7 +36,7 @@
             <field name="name">informacion.tree</field>
             <field name="model">odoo_basico.informacion</field>
             <field name="arch" type="xml">
-                <tree string="Formulario de información">
+                <tree string="informacion tree">
                     <field name="name"/>
                     <field name="descripcion"/>
                     <field name="peso"/>
@@ -42,8 +44,33 @@
                     <field name="longo_en_cm"/>
                     <field name="ancho_en_cm"/>
                     <field name="autorizado"/>
+                    <field name="sexo_traducido"/>
                 </tree>
             </field>
+        </record>
+
+        <record model="ir.filters" id="filtroAutorizado">
+            <field name="name">Filtro informacion agrupado por Autorizado</field>
+            <field name="model_id">odoo_basico.informacion</field>
+            <field name="context">{'group_by': ['autorizado']}</field>
+            <field name="is_default">true</field>
+            <field name="active">true</field>
+            <field name="sort">[]</field>
+            <field name="domain">[]</field><!-- Aquí iría o filtro -->
+            <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
+            <field name="action_id" eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
+        </record>
+
+        <record model="ir.filters" id="filtro2">
+            <field name="name">Filtro informacion 2</field>
+            <field name="model_id">odoo_basico.informacion</field>
+            <field name="context">{'group_by': ['autorizado']}</field>
+            <field name="is_default">false</field>
+            <field name="active">true</field>
+            <field name="sort">[]</field>
+            <field name="domain">['|','&amp;',('autorizado', '=', False),('sexo_traducido', '=', 'Mujer'),('name', '=','Rexistro 3' )]</field><!-- Aquí iría o filtro -->
+            <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
+            <field name="action_id" eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
         </record>
     </data>
 </odoo>
