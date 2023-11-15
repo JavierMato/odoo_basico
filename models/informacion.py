@@ -12,12 +12,15 @@ class informacion(models.Model):
     alto_en_cm = fields.Integer(string="Alto en centímetros:")
     longo_en_cm = fields.Integer(string="Longo en centímetros:")
     ancho_en_cm = fields.Integer(string="Ancho en centímetros:")
+    volume = fields.Float(compute="_volume", store=True)
     peso = fields.Float(digits=(6,2), default = 2.7, string="Peso en KG.:")
     autorizado = fields.Boolean(default=True, string="¿Autorizado?")
     sexo_traducido = fields.Selection([('Hombre','Home'),('Mujer','Muller'),('Otros','Outros')], string="Sexo:")
 
-
-
+    @api.depends('alto_en_cm', 'longo_en_cm', 'ancho_en_cm')
+    def _volume(self):
+        for rexistro in self:
+            rexistro.volume = float(rexistro.alto_en_cm) * float(rexistro.longo_en_cm) * float(rexistro.ancho_en_cm)
 
 # class odoo_basico(models.Model):
 #     _name = 'odoo_basico.odoo_basico'

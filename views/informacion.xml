@@ -23,6 +23,7 @@
                             <field name="alto_en_cm"/>
                             <field name="longo_en_cm"/>
                             <field name="ancho_en_cm"/>
+                            <field name="volume"/>
                             <field name="peso"/>
                             <field name="autorizado"/>
                             <field name="sexo_traducido"/>
@@ -39,10 +40,11 @@
                 <tree string="informacion tree">
                     <field name="name"/>
                     <field name="descripcion"/>
-                    <field name="peso"/>
                     <field name="alto_en_cm"/>
                     <field name="longo_en_cm"/>
                     <field name="ancho_en_cm"/>
+                    <field name="volume"/>
+                    <field name="peso"/>
                     <field name="autorizado"/>
                     <field name="sexo_traducido"/>
                 </tree>
@@ -58,7 +60,8 @@
             <field name="sort">[]</field>
             <field name="domain">[]</field><!-- Aquí iría o filtro -->
             <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
-            <field name="action_id" eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
+            <field name="action_id"
+                   eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
         </record>
 
         <record model="ir.filters" id="filtro2">
@@ -68,9 +71,12 @@
             <field name="is_default">false</field>
             <field name="active">true</field>
             <field name="sort">[]</field>
-            <field name="domain">['|','&amp;',('autorizado', '=', False),('sexo_traducido', '=', 'Mujer'),('name', '=','Rexistro 3' )]</field><!-- Aquí iría o filtro -->
+            <field name="domain">['|','&amp;',('autorizado', '=', False),('sexo_traducido', '=', 'Mujer'),('name',
+                '=','Rexistro 3' )]
+            </field><!-- Aquí iría o filtro -->
             <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
-            <field name="action_id" eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
+            <field name="action_id"
+                   eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
         </record>
     </data>
 </odoo>
