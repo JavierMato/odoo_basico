@@ -19,15 +19,45 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="descripcion"/>
-                            <field name="alto_en_cm"/>
-                            <field name="longo_en_cm"/>
-                            <field name="ancho_en_cm"/>
-                            <field name="volume"/>
-                            <field name="peso"/>
-                            <field name="autorizado"/>
-                            <field name="sexo_traducido"/>
                         </group>
+                        <notebook>
+                            <page string="Datos texto">
+                                <group>
+                                    <field name="descripcion"/>
+                                    <field name="autorizado"/>
+                                    <field name="sexo_traducido"/>
+                                </group>
+                            </page>
+                            <page string="Datos numericos">
+                                <group>
+                                    <group>
+                                        <field name="alto_en_cm"/>
+                                        <field name="longo_en_cm"/>
+                                        <field name="ancho_en_cm"/>
+                                        <field name="literal" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="volume"/>
+                                        <field name="peso"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Binary">
+                                <group>
+
+                                </group>
+                            </page>
+                            <page string="Moedas">
+                                <group>
+
+                                </group>
+                            </page>
+                            <page string="Data e hora">
+                                <group>
+
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
