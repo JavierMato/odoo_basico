@@ -3,7 +3,7 @@
         <record model="ir.actions.act_window" id="informacion_list_action">
             <field name="name">A acción de información</field>
             <field name="res_model">odoo_basico.informacion</field>
-            <field name="view_mode">tree,form,graph</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Tes que crear o primeiro rexistro</p>
             </field>
@@ -45,12 +45,22 @@
                             </page>
                             <page string="Binary">
                                 <group>
-
+                                    <field name="foto" widget="image"/>
+                                    <field name="adxunto_nome" invisible="1"/>
+                                    <field name="adxunto" filename="adxunto_nome"/>
                                 </group>
                             </page>
                             <page string="Moedas">
                                 <group>
-
+                                    <group>
+                                        <field name="moeda_id"/>
+                                        <field name="moeda_en_texto"/>
+                                        <field name="creador_da_moeda"/>
+                                    </group>
+                                    <group>
+                                        <field name="moeda_euro_id" invisible="1"/>
+                                        <field name="gasto_en_euros"/>
+                                    </group>
                                 </group>
                             </page>
                             <page string="Data e hora">
@@ -79,6 +89,7 @@
                     <field name="densidade"/>
                     <field name="autorizado"/>
                     <field name="sexo_traducido"/>
+                    <field name="moeda_id"/>
                 </tree>
             </field>
         </record>
@@ -122,5 +133,22 @@
             <field name="action_id"
                    eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
         </record>
+
+
+        <record model="ir.ui.view" id="informacion_pivot_view">
+            <field name="name">informacion.pivot</field>
+            <field name="model">odoo_basico.informacion</field>
+            <field name="arch" type="xml">
+                <pivot string="pivotando">
+                    <field name="alto_en_cm" type="row"/>
+                    <field name="sexo_traducido" type="col"/>
+                    <field name="densidade" type="measure"/>
+                    <field name="peso" type="measure"/>
+                    <field name="volume" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+
     </data>
 </odoo>
