@@ -62,16 +62,6 @@ class informacion(models.Model):
             if rexistro.peso < 1 or rexistro.peso > 4:
                 raise ValidationError('Os peso de %s ten que ser entre 1 e 4 ' % rexistro.name)
 
-# class odoo_basico(models.Model):
-#     _name = 'odoo_basico.odoo_basico'
-#     _description = 'odoo_basico.odoo_basico'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    def _cambia_campo_sexo(self, rexistro):
+        rexistro.sexo_traducido = "Hombre"
