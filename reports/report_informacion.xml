@@ -41,15 +41,16 @@
                 <div clas="page">
                     <div class="container">
                         <table class="table table-sm">
-                        <thead>
-                            <tr class="bg-primary">
-                                <th class="text-left">Titulo(name)</th>
-                                <th class="text-left">Peso</th>
-                                <th class="text-left">Autorizado</th>
-                                <th class="text-left">Datas</th>
-                                <th class="text-left">Sexo</th>
-                            </tr>
-                        </thead>
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th class="text-left">Titulo(name)</th>
+                                    <th class="text-left">Peso</th>
+                                    <th class="text-left">Autorizado</th>
+                                    <th class="text-left">Datas</th>
+                                    <th class="text-left">Sexo</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </t>
