@@ -27,6 +27,7 @@
         'views/informacion.xml',
         'views/suceso.xml',
         'views/pedido.xml',
+        'views/persoa.xml',
         'views/lineapedido.xml',
         'views/templates.xml',
         'reports/report_header.xml',
